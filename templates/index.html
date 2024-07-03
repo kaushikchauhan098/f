@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Matching</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .images {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .image-container {
+            margin-right: 20px;
+        }
+        .image-container img {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Face Matching</h1>
+        <form action="/" method="post">
+            <label for="url1">URL of First Image:</label>
+            <input type="text" id="url1" name="url1" required>
+            <label for="url2">URL of Second Image:</label>
+            <input type="text" id="url2" name="url2" required>
+            <button type="submit">Compare Faces</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+
+        {% if image1_url and image2_url %}
+        <div class="images">
+            <div class="image-container">
+                <p>Image 1</p>
+                <img src="{{ image1_url }}" alt="Image 1">
+            </div>
+            <div class="image-container">
+                <p>Image 2</p>
+                <img src="{{ image2_url }}" alt="Image 2">
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
