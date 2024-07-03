@@ -3,3 +3,4 @@ requests
 Pillow
 deepface
 gunicorn
+tf-keras
